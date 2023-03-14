@@ -27,7 +27,7 @@ class Dashboard():
 
 
     def get_selected_class(self):
-        self.selected_class = st.selectbox("Choose class", options = ["All classes", *self.all_classes])
+        self.selected_class = st.selectbox("Choose class", options = ["All classes", *self.all_classes], index = 0)
 
         return self
 

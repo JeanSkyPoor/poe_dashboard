@@ -153,8 +153,7 @@ class Dashboard():
         return self
 
     def draw_count_character_graph(self):
-        self.count_character_per_acc_df = self.original_df.groupby("Account").agg({"Character":"count"}).Character.value_counts() 
-        st.dataframe(self.original_df.groupby("Account").agg({"Character":"count"}))
+        self.count_character_per_acc_df = self.original_df.groupby("Account").agg({"Character":"count"}).Character.value_counts()
         fig = px.bar(self.count_character_per_acc_df, x = self.count_character_per_acc_df.index.values, y = self.count_character_per_acc_df.values, text_auto = True)
         fig.update_layout(title = 'Count character per account', 
             xaxis_title = "Character per account", 

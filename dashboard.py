@@ -123,47 +123,50 @@ class Dashboard():
 
     def draw_lvl_dist_graph(self, df):
         self.lvl_dist_df = df.Level.value_counts()
-        fig = px.bar(self.lvl_dist_df, x = self.lvl_dist_df.index.values, y = self.lvl_dist_df.values, text_auto = True)
-        fig.update_layout(title = 'Level distribution', 
-            xaxis_title = "Level", 
-            yaxis_title = 'Count', 
-            width = 800, 
-            height = 500, 
-            titlefont=dict(size=40))
-        fig.update_xaxes(tickangle=280, tickfont=dict(size=15), titlefont=dict(size=25))
-        fig.update_yaxes(titlefont=dict(size=25))
+        if self.lvl_dist_df.shape[0] != 0:
+            fig = px.bar(self.lvl_dist_df, x = self.lvl_dist_df.index.values, y = self.lvl_dist_df.values, text_auto = True)
+            fig.update_layout(title = 'Level distribution', 
+                xaxis_title = "Level", 
+                yaxis_title = 'Count', 
+                width = 800, 
+                height = 500, 
+                titlefont=dict(size=40))
+            fig.update_xaxes(tickangle=280, tickfont=dict(size=15), titlefont=dict(size=25))
+            fig.update_yaxes(titlefont=dict(size=25))
 
-        st.plotly_chart(fig, theme="streamlit")
+            st.plotly_chart(fig, theme="streamlit")
 
         return self
 
     def draw_class_dist_all_classes_graph(self):
-        self.class_dist_df = self.original_df.Class.value_counts()        
-        fig = px.bar(self.class_dist_df, x = self.class_dist_df.index.values, y = self.class_dist_df.values, text_auto = True)
-        fig.update_layout(title = 'Сlass distribution', 
-            xaxis_title = "Classes", 
-            yaxis_title = 'Count', 
-            width = 800, 
-            height = 500, 
-            titlefont=dict(size=40))
-        fig.update_xaxes(tickangle=280, tickfont=dict(size=15), titlefont=dict(size=25))
-        fig.update_yaxes(titlefont=dict(size=25))    
-        st.plotly_chart(fig, theme="streamlit")
+        self.class_dist_df = self.original_df.Class.value_counts() 
+        if self.class_dist_df.shape[0] != 0:       
+            fig = px.bar(self.class_dist_df, x = self.class_dist_df.index.values, y = self.class_dist_df.values, text_auto = True)
+            fig.update_layout(title = 'Сlass distribution', 
+                xaxis_title = "Classes", 
+                yaxis_title = 'Count', 
+                width = 800, 
+                height = 500, 
+                titlefont=dict(size=40))
+            fig.update_xaxes(tickangle=280, tickfont=dict(size=15), titlefont=dict(size=25))
+            fig.update_yaxes(titlefont=dict(size=25))    
+            st.plotly_chart(fig, theme="streamlit")
 
         return self
 
     def draw_count_character_graph(self):
         self.count_character_per_acc_df = self.original_df.groupby("Account").agg({"Character":"count"}).Character.value_counts()
-        fig = px.bar(self.count_character_per_acc_df, x = self.count_character_per_acc_df.index.values, y = self.count_character_per_acc_df.values, text_auto = True)
-        fig.update_layout(title = 'Count character per account', 
-            xaxis_title = "Character per account", 
-            yaxis_title = 'Count', 
-            width = 800, 
-            height = 500, 
-            titlefont=dict(size=40))
-        fig.update_xaxes(tickangle=280, tickfont=dict(size=15), titlefont=dict(size=25))
-        fig.update_yaxes(titlefont=dict(size=25))    
-        st.plotly_chart(fig, theme="streamlit")
+        if self.count_character_per_acc_df.shape[0] != 0:
+            fig = px.bar(self.count_character_per_acc_df, x = self.count_character_per_acc_df.index.values, y = self.count_character_per_acc_df.values, text_auto = True)
+            fig.update_layout(title = 'Count character per account', 
+                xaxis_title = "Character per account", 
+                yaxis_title = 'Count', 
+                width = 800, 
+                height = 500, 
+                titlefont=dict(size=40))
+            fig.update_xaxes(tickangle=280, tickfont=dict(size=15), titlefont=dict(size=25))
+            fig.update_yaxes(titlefont=dict(size=25))    
+            st.plotly_chart(fig, theme="streamlit")
 
         return self
     

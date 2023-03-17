@@ -3,6 +3,8 @@ import streamlit as st
 import plotly.express as px
 
 
+
+
 class Dashboard():
     def read_dropped_file(self, df):
         self.orig_df = pd.read_csv(df, sep = ",").drop(columns = ["Dead"])
@@ -150,7 +152,7 @@ class Dashboard():
                 width = 800, 
                 height = 500, 
                 titlefont=dict(size=40))
-            fig.update_xaxes(tickangle=280, tickfont=dict(size=15), titlefont=dict(size=25))
+            fig.update_xaxes(tickangle=280, tickfont=dict(size=15), titlefont=dict(size=25), range = [1, 102])
             fig.update_yaxes(titlefont=dict(size=25))
             fig.update_traces(width=1)
             st.plotly_chart(fig, theme="streamlit")
@@ -194,14 +196,3 @@ if raw_data != None:
         .draw_class_dist_graph()\
         .draw_lvl_dist_graph()\
         .draw_count_character_graph()
-
-
-
-
-
-
-
-
-
-
-

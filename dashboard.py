@@ -15,14 +15,14 @@ class Dashboard():
     def draw_table_interface(self):
         self.draw_selected_class()
 
-        search_by_account, slider, search_by_character = st.columns(3)
+        search_by_account, slider, search_by_character = st.columns([1, 2, 1])
 
         with search_by_account:
             self.draw_search_by_account()
 
         with slider:
             self.draw_lvl_slider()
-            
+
         with search_by_character:
             self.draw_search_by_character()
 
@@ -91,6 +91,7 @@ class Dashboard():
 
         
         return self
+
 
     def get_metrics(self):
         self.max_lvl_metric = self.filtered_df.Level.max()
@@ -177,6 +178,8 @@ class Dashboard():
             fig.update_xaxes(tickangle=280, tickfont=dict(size=15), titlefont=dict(size=25))
             fig.update_yaxes(titlefont=dict(size=25))    
             st.plotly_chart(fig, theme="streamlit", use_container_width = True)
+        else:
+            st.warning("I can't plot empty data")
 
         return self
 

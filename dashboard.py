@@ -152,7 +152,7 @@ class Dashboard():
                 width = 800, 
                 height = 500, 
                 titlefont=dict(size=40))
-            fig.update_xaxes(tickangle=280, tickfont=dict(size=15), titlefont=dict(size=25), range = [1, 102])
+            fig.update_xaxes(tickangle=280, tickfont=dict(size=15), titlefont=dict(size=25), range = [0, 102])
             fig.update_yaxes(titlefont=dict(size=25))
             fig.update_traces(width=1)
             st.plotly_chart(fig, theme="streamlit")

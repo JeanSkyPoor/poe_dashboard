@@ -14,15 +14,18 @@ class Dashboard():
 
     def draw_table_interface(self):
         self.draw_selected_class()
-        search_by_account, search_by_character = st.columns(2)
+
+        search_by_account, slider, search_by_character = st.columns(3)
 
         with search_by_account:
             self.draw_search_by_account()
 
+        with slider:
+            self.draw_lvl_slider()
+            
         with search_by_character:
             self.draw_search_by_character()
 
-        self.draw_lvl_slider()
         
         return self
 

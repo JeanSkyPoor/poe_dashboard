@@ -2,7 +2,7 @@ import pandas as pd
 import streamlit as st
 import plotly.express as px
 
-
+st.set_page_config(layout="wide")
 
 
 class Dashboard():
@@ -130,13 +130,12 @@ class Dashboard():
                 fig.update_layout(title = 'Сlass distribution', 
                     xaxis_title = "Classes", 
                     yaxis_title = 'Count', 
-                    width = 800, 
-                    height = 500, 
+                    height = 600, 
                     titlefont=dict(size=40))
                 fig.update_xaxes(tickangle=280, tickfont=dict(size=15), titlefont=dict(size=25))
                 fig.update_yaxes(titlefont=dict(size=25))   
                 fig.update_traces(width=0.5) 
-                st.plotly_chart(fig, theme="streamlit")
+                st.plotly_chart(fig, theme="streamlit", use_container_width = True)
             else:
                 st.warning("I can't plot empty data")
         return self
@@ -149,13 +148,12 @@ class Dashboard():
             fig.update_layout(title = 'Level distribution', 
                 xaxis_title = "Level", 
                 yaxis_title = 'Count', 
-                width = 800, 
-                height = 500, 
+                height = 600, 
                 titlefont=dict(size=40))
             fig.update_xaxes(tickangle=280, tickfont=dict(size=15), titlefont=dict(size=25), range = [0, 102])
             fig.update_yaxes(titlefont=dict(size=25))
             fig.update_traces(width=1)
-            st.plotly_chart(fig, theme="streamlit")
+            st.plotly_chart(fig, theme="streamlit", use_container_width=True)
         else:
             st.warning("I can't plot empty data")
 
@@ -170,13 +168,12 @@ class Dashboard():
             fig = px.bar(filtered_df, x = "Character per account", y = "Total people with same sum", text_auto = True, template='seaborn')
             fig.update_layout(title = 'Count character per account', 
                 xaxis_title = "Character per account", 
-                yaxis_title = 'Count', 
-                width = 800, 
-                height = 500, 
+                yaxis_title = 'Count',
+                height = 600, 
                 titlefont=dict(size=40))
             fig.update_xaxes(tickangle=280, tickfont=dict(size=15), titlefont=dict(size=25))
             fig.update_yaxes(titlefont=dict(size=25))    
-            st.plotly_chart(fig, theme="streamlit")
+            st.plotly_chart(fig, theme="streamlit", use_container_width = True)
 
         return self
 

@@ -4,8 +4,10 @@ import plotly.express as px
 
 
 class Dashboard():
+    dropped_columns = ["Dead"]
+
     def read_dropped_file(self, df):
-        self.orig_df = pd.read_csv(df, sep = ",").drop(columns = ["Dead"])
+        self.orig_df = pd.read_csv(df, sep = ",", usecols = lambda x: x not in self.dropped_columns)
 
         return self
 

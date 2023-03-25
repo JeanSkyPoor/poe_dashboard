@@ -154,7 +154,7 @@ class Dashboard():
                 yaxis_title = 'Count', 
                 height = 600, 
                 titlefont=dict(size=40))
-            fig.update_xaxes(tickangle=280, tickfont=dict(size=15), titlefont=dict(size=25), range = [0, 102])
+            fig.update_xaxes(tickangle=280, tickfont=dict(size=15), titlefont=dict(size=25), range = [0, 102], dtick = 5)
             fig.update_yaxes(titlefont=dict(size=25))
             fig.update_traces(width=1)
             st.plotly_chart(fig, theme="streamlit", use_container_width=True)
@@ -175,7 +175,7 @@ class Dashboard():
                 yaxis_title = 'Count',
                 height = 600, 
                 titlefont=dict(size=40))
-            fig.update_xaxes(tickangle=280, tickfont=dict(size=15), titlefont=dict(size=25))
+            fig.update_xaxes(tickangle=280, tickfont=dict(size=15), titlefont=dict(size=25), dtick = 1)
             fig.update_yaxes(titlefont=dict(size=25))    
             st.plotly_chart(fig, theme="streamlit", use_container_width = True)
         else:

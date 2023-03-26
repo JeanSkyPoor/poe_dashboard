@@ -148,16 +148,16 @@ class Dashboard():
     def draw_lvl_dist_graph(self):
         if self.filtered_df.shape[0] != 0:
             filtered_df = self.filtered_df.Level.value_counts().reset_index().rename(columns = {"index": "Level", "Level": "Total_count"})
-            fig = px.bar(filtered_df, x = "Level", y = "Total_count", text_auto = True, template='seaborn')
+            fig = px.bar(filtered_df, x = "Level", y = "Total_count", text_auto = True, template = 'seaborn')
             fig.update_layout(title = 'Level distribution', 
                 xaxis_title = "Level", 
                 yaxis_title = 'Count', 
                 height = 600, 
-                titlefont=dict(size=40))
-            fig.update_xaxes(tickangle=280, tickfont=dict(size=15), titlefont=dict(size=25), range = [0, 102], dtick = 5)
-            fig.update_yaxes(titlefont=dict(size=25))
-            fig.update_traces(width=1)
-            st.plotly_chart(fig, theme="streamlit", use_container_width=True)
+                titlefont = dict(size = 40))
+            fig.update_xaxes(tickangle = 0, tickfont = dict(size = 15), titlefont = dict(size = 25), range = [0, 102], dtick = 5)
+            fig.update_yaxes(titlefont = dict(size = 25))
+            fig.update_traces(width = 1)
+            st.plotly_chart(fig, theme = "streamlit", use_container_width = True)
         else:
             st.warning("I can't plot empty data")
 
@@ -169,15 +169,15 @@ class Dashboard():
             filtered_df = self.filtered_df.groupby("Account").agg({"Character": "count"})\
                 .Character.value_counts().reset_index().rename(columns = {"index": "Character per account",
                                                                             "Character": "Total people with same sum"})
-            fig = px.bar(filtered_df, x = "Character per account", y = "Total people with same sum", text_auto = True, template='seaborn')
+            fig = px.bar(filtered_df, x = "Character per account", y = "Total people with same sum", text_auto = True, template = 'seaborn')
             fig.update_layout(title = 'Count character per account', 
                 xaxis_title = "Character per account", 
                 yaxis_title = 'Count',
                 height = 600, 
-                titlefont=dict(size=40))
-            fig.update_xaxes(tickangle=280, tickfont=dict(size=15), titlefont=dict(size=25), dtick = 1)
-            fig.update_yaxes(titlefont=dict(size=25))    
-            st.plotly_chart(fig, theme="streamlit", use_container_width = True)
+                titlefont = dict(size = 40))
+            fig.update_xaxes(tickangle = 0, tickfont = dict(size = 15), titlefont = dict(size = 25), dtick = 1)
+            fig.update_yaxes(titlefont = dict(size = 25))    
+            st.plotly_chart(fig, theme = "streamlit", use_container_width = True)
         else:
             st.warning("I can't plot empty data")
 
